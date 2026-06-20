@@ -1,0 +1,61 @@
+spring:
+  profiles:
+    active: local
+  data:
+    redis:
+      host: 192.168.64.100
+      port: 6379
+      client-type: jedis
+  rabbitmq:
+    host: 192.168.64.100
+    port: 5672
+    virtual-host: /
+
+  application:
+    name: spring-ai-demo
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: 40MB
+  ai:
+    vectorstore: #向量库配置
+      # elasticsearch: #使用ES作为向量库存储
+      #   initialize-schema: true  #开启初始化向量库结构
+      #   dimensions: 1024  #向量维度维度
+      redis:
+        initialize-schema: true
+        index-name: campusai-ai-index
+        prefix: "campusai:"
+    chat:
+      memory:
+        repository:
+          jdbc:
+            initialize-schema: always # 自动建表
+            schema: classpath:sql/schema-mysql.sql # 建表脚本
+    openai: # 阿里云百炼平台兼容OpenAI，所以这里使用阿里云百炼平台地址
+      base-url: https://dashscope.aliyuncs.com/compatible-mode
+      api-key: ${ALIYUN_API_KEY}
+      chat:
+        options:
+          model: qwen-plus
+      embedding:
+        options:
+          model: text-embedding-v3
+          dimensions: 1024
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.64.100:3306/campusai?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: root
+logging:
+  level:
+    com.itheima: debug
+    org.springframework.ai: debug
+
+
+#canal:
+#  server: 192.168.64.100:11111  # Canal Server地址和端口
+#  destination: test     # Canal实例名
+#  batch-size: 1000        # 批量获取大小
+#  retry-count: 20         # 重试次数
+#  acquire-interval: 1000  # 获取消息间隔(毫秒)
