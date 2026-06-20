@@ -1,39 +1,83 @@
-# 智慧园区
+﻿# Campus AI - 智慧园区AI智慧助手系统
 
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+## 项目简介
 
-#### 软件架构
-软件架构说明
+Campus AI 是一个基于人工智能技术的智慧园区/校园智能助手系统，提供 AI 对话、PDF 智能阅读、智能客服、舒适度模拟等多种智能化服务，帮助园区/校园实现数字化与智能化管理。
 
+## 技术栈
 
-#### 安装教程
+### 后端
+- **Spring Boot** 2.5.15 — 微服务框架
+- **RuoYi** 4.7.8 — 后台权限管理系统
+- **Shiro** — 安全认证与权限管理
+- **MyBatis** — 数据持久化
+- **Druid** — 数据库连接池
+- **RabbitMQ** — 消息队列
+- **MySQL** — 关系型数据库
+- **Redis** — 缓存
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+### 前端（Vue）
+- **Vue 3** — 渐进式 JavaScript 框架
+- **Vite** — 前端构建工具
+- **Pinia** — 状态管理
+- **Vue Router** — 路由管理
 
-#### 使用说明
+### 前端（Java）
+- **Java Spring MVC** — 管理后台前端
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## 功能特性
 
-#### 参与贡献
+- 🤖 **AI 智能对话** — 基于大语言模型的智能问答交互
+- 📄 **PDF 智能阅读** — 上传 PDF 文档，AI 辅助阅读与分析
+- 🎮 **游戏化聊天** — 趣味互动聊天模式
+- 🛋️ **舒适度模拟** — 园区环境舒适度评估与模拟
+- 💬 **智能客服** — 自动化客服问答系统
+- 🔐 **权限管理** — 基于 Shiro 的角色与权限控制
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+## 快速开始
 
+### 环境要求
+- JDK 1.8+
+- MySQL 5.7+
+- Redis
+- Node.js 16+（Vue 前端）
 
-#### 特技
+### 数据库初始化
+```
+source campusai.sql
+```
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+### 启动后端
+```
+cd backend
+mvn clean package -Dmaven.test.skip=true
+java -jar target/backend.jar
+```
+
+### 启动 Vue 前端
+```
+cd vue
+npm install
+npm run dev
+```
+
+### 访问地址
+- Vue 前端：http://localhost:5173
+- 管理后台：http://localhost:8080
+
+## 项目结构
+
+```
+campus-ai/
+├── backend/          # Java Spring Boot 后端
+│   ├── src/          # 源代码
+│   ├── docker/       # Docker 部署配置
+│   └── pom.xml       # Maven 依赖配置
+├── frontend/         # Java 管理后台前端
+├── vue/              # Vue 3 前端应用
+│   ├── src/          # 源代码
+│   ├── dist/         # 构建产物
+│   └── package.json  # 依赖配置
+├── campusai.sql      # 数据库初始化脚本
+└── README.md         # 项目文档
+```

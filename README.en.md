@@ -1,36 +1,73 @@
-# 智慧园区
+﻿# Campus AI - Smart Campus AI Assistant System
 
-#### Description
-{**When you're done, you can delete the content in this README and update the file with details for others getting started with your repository**}
+## Overview
 
-#### Software Architecture
-Software architecture description
+Campus AI is an intelligent campus assistant system powered by AI technology, featuring AI chat, PDF intelligent reading, smart customer service, comfort simulation, and other smart services to help campuses achieve digital and intelligent management.
 
-#### Installation
+## Tech Stack
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+### Backend
+- **Spring Boot** 2.5.15
+- **RuoYi** 4.7.8 — Permission Management System
+- **Shiro** — Authentication & Authorization
+- **MyBatis** — ORM Framework
+- **Druid** — Database Connection Pool
+- **RabbitMQ** — Message Queue
+- **MySQL** — Relational Database
+- **Redis** — Cache
 
-#### Instructions
+### Frontend (Vue)
+- **Vue 3** — Progressive JavaScript Framework
+- **Vite** — Build Tool
+- **Pinia** — State Management
+- **Vue Router** — Routing
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+### Frontend (Java)
+- **Java Spring MVC** — Admin Dashboard
 
-#### Contribution
+## Features
 
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
+- 🤖 **AI Chat** — LLM-powered Q&A interaction
+- 📄 **PDF Reader** — Upload PDF documents for AI-assisted reading & analysis
+- 🎮 **Game Chat** — Gamified interactive chat mode
+- 🛋️ **Comfort Simulator** — Campus environment comfort assessment
+- 💬 **Smart Customer Service** — Automated Q&A system
+- 🔐 **Permission Management** — Role-based access control
 
+## Quick Start
 
-#### Gitee Feature
+### Prerequisites
+- JDK 1.8+
+- MySQL 5.7+
+- Redis
+- Node.js 16+
 
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+### Database Setup
+```
+source campusai.sql
+```
+
+### Run Backend
+```
+cd backend
+mvn clean package -Dmaven.test.skip=true
+java -jar target/backend.jar
+```
+
+### Run Vue Frontend
+```
+cd vue
+npm install
+npm run dev
+```
+
+## Project Structure
+
+```
+campus-ai/
+├── backend/          # Java Spring Boot Backend
+├── frontend/         # Java Admin Frontend
+├── vue/              # Vue 3 Frontend Application
+├── campusai.sql      # Database Schema
+└── README.md         # Documentation
+```
